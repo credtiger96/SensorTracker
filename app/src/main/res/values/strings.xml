@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SensorTracker</string>
+    <string name="nav_bluetooth">Bluetooth</string>
+    <string name="nav_setting">Setting</string>
 </resources>

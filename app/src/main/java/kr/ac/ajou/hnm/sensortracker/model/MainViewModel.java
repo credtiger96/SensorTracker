@@ -1,4 +1,4 @@
-package kr.ac.ajou.hnm.sensortracker.ui.main;
+package kr.ac.ajou.hnm.sensortracker.model;
 
 import android.arch.lifecycle.ViewModel;
 

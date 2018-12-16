@@ -1,4 +1,4 @@
-package kr.ac.ajou.hnm.sensortracker.ui.main;
+package kr.ac.ajou.hnm.sensortracker.ui.fragment;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import kr.ac.ajou.hnm.sensortracker.R;
+import kr.ac.ajou.hnm.sensortracker.model.MainViewModel;
 
 public class MainFragment extends Fragment {
 
@@ -19,7 +20,6 @@ public class MainFragment extends Fragment {
         return new MainFragment();
     }
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
