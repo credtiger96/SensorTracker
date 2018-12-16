@@ -160,10 +160,9 @@ public class MonitorConfigureActivity extends RxAppCompatActivity {
 
     @OnClick(R.id.monitor_disconnect)
     void onclick_monitor_disconnect(){
+        Log.d("credtiger96", "Onclieck : monitor disconnect");
         disposeConnection();
         mService.stopListening();
-
-
     }
 
 
@@ -264,11 +263,15 @@ public class MonitorConfigureActivity extends RxAppCompatActivity {
 
         if (isConnected()){
             mDisconnectButton.setActivated(true);
-            mMonotiorConnecitonStatus.setText(String.format(getString(R.string.monitor_status_connected), mRxBleDevice.getName()));
+            mMonotiorConnecitonStatus.setText(R.string.monitor_status_disconnected);
+
         }
         else {
             mDisconnectButton.setActivated(false);
-            mMonotiorConnecitonStatus.setText(R.string.monitor_status_disconnected);
+            if (mRxBleDevice != null)
+                mMonotiorConnecitonStatus.setText(
+                        String.format(getString(R.string.monitor_status_connected),
+                                mRxBleDevice.getName()));
         }
     }
 

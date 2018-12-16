@@ -17,6 +17,7 @@ import javax.inject.Singleton;
 import io.reactivex.disposables.Disposable;
 import kr.ac.ajou.hnm.sensortracker.BaseApplication;
 import kr.ac.ajou.hnm.sensortracker.R;
+import kr.ac.ajou.hnm.sensortracker.model.Monitor;
 
 import static kr.ac.ajou.hnm.sensortracker.BaseApplication.getRxBleClient;
 
@@ -29,6 +30,10 @@ public class MonitorService extends Service {
             // Return this instance of LocalService so clients can call public methods
             return MonitorService.this;
         }
+    }
+
+    Monitor getMonitors (){
+        return null;
     }
 
     public String monitorMAC;
@@ -44,6 +49,7 @@ public class MonitorService extends Service {
         if (monitorMAC == null){
             return;
         }
+
         mRxBleClient = BaseApplication.getRxBleClient(getApplicationContext());
 
         mRxBleDevice = mRxBleClient.getBleDevice(monitorMAC);
@@ -56,17 +62,38 @@ public class MonitorService extends Service {
                 .flatMap(notificationObservable -> notificationObservable) // <-- Notification has been set up, now observe value changes.
                 .subscribe(
                         bytes -> {
+                            /*
                             String tmp = "";
                             for (byte b : bytes){
                                 tmp += String.format("0X%02X ", b);
                             }
                             Log.d("credtiger96", tmp);
+*/
+                            processData(bytes);
                         },
                         throwable -> {
                             Log.e("credtiger96", throwable.toString());
                             // Handle an error here.
                         }
                 );
+    }
+
+    private void processData(byte[] data) {
+        int count = data[1];
+        for (int i = 0; i < count; i++){
+            int offset = 2 + i * 7;
+
+            long id = (long)data[offset] & 0xFF;
+            id += ((long)data[offset + 1] & 0xFF);
+
+            long distance = (long)data[offset + 2] & 0xFF;
+            distance += ((long)data[offset + 3] & 0xFF) << 8;
+            distance += ((long)data[offset + 4] & 0xFF) << 16;
+            distance += ((long)data[offset + 5] & 0xFF) << 24;
+
+            Log.d("credtiger96", "ID : " + id + " Distance : " + distance);
+        }
+
     }
 
     public void stopListening(){
