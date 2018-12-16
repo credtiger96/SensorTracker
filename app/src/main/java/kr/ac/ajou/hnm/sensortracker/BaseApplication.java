@@ -6,7 +6,10 @@ import android.content.Context;
 import com.polidea.rxandroidble2.RxBleClient;
 import com.polidea.rxandroidble2.internal.RxBleLog;
 
-public class SensorTrackerApplication extends Application {
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
+
+public class BaseApplication extends Application {
 
     private RxBleClient rxBleClient;
 
@@ -14,13 +17,14 @@ public class SensorTrackerApplication extends Application {
      * In practise you will use some kind of dependency injection pattern.
      */
     public static RxBleClient getRxBleClient(Context context) {
-        SensorTrackerApplication application = (SensorTrackerApplication)context.getApplicationContext();
+        BaseApplication application = (BaseApplication)context.getApplicationContext();
         return application.rxBleClient;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         rxBleClient = RxBleClient.create(this);
         RxBleClient.setLogLevel(RxBleLog.VERBOSE);
     }

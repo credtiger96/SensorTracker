@@ -2,4 +2,99 @@
     <string name="app_name">SensorTracker</string>
     <string name="nav_bluetooth">Bluetooth</string>
     <string name="nav_setting">Setting</string>
+    <string name="title_activity_monitor_configure">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="scan_list">scanned devices</string>
+    <string name="monitor_start_scan">START SCAN</string>
+    <string name="monitor_stop_scan">STOP SCAN</string>
+    <string name="ble_not_supported">It seems like your device does not support BLE(Bluetooth Low Energy). Terminating app.</string>
+    <string name="error_bluetooth_not_available">Bluetooth is not available</string>
+    <string name="error_bluetooth_disabled">Bluetooth is disabled in your device.</string>
+    <string name="error_location_permission_missing">location permission is needed.</string>
+    <string name="error_location_services_disabled">location service is disabled.</string>
+    <string name="error_scan_failed_already_started">scan is already started.</string>
+    <string name="error_scan_failed_application_registration_failed">application registration failed.</string>
+    <string name="error_scan_failed_feature_unsupported">scan failed : feature unsupported.</string>
+    <string name="error_scan_failed_internal_error">scan failed : internal error</string>
+    <string name="error_scan_failed_out_of_hardware_resources">scan failed : out of hardware resource</string>
+    <string name="error_bluetooth_cannot_start">scan failed : bluetooth cannnot start.</string>
+    <string name="error_unknown_error">error_unknown_error</string>
+    <string name="error_undocumented_scan_throttle">ERROR : undocumented scan throttle</string>
+    <string name="error_undocumented_scan_throttle_retry">Try in %d seconds</string>
+    <string name="label_connected_device_none">Not Connected</string>
+    <string name="dialog_connection_with">Do you want to connect with device \'%s\' ?</string>
+    <string name="dialog_connection_positive">Connect</string>
+    <string name="dialog_connection_negative">Cancle</string>
+    <string name="monitor_disconnect">DISCONNECT</string>
 </resources>
