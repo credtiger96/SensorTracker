@@ -35,7 +35,7 @@
         app:layout_constraintStart_toEndOf="@+id/monitor_scan" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/monitor_connection_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,7 +54,7 @@
         android:text="@string/scan_list"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/monitor_connection_status" />
 
     <ScrollView
         android:id="@+id/scrollView2"
