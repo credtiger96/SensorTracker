@@ -48,8 +48,8 @@ import static com.trello.rxlifecycle2.android.ActivityEvent.PAUSE;
 public class MonitorConfigureActivity extends RxAppCompatActivity {
 
     private RxBleClient mRxBleClient;
-    private MonitorService mService;
-    private boolean mBound  =false;
+    public MonitorService mService;
+    private boolean mBound = false;
 
     private boolean isScanning;
 
@@ -118,7 +118,6 @@ public class MonitorConfigureActivity extends RxAppCompatActivity {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::onConnectionStateChange); 
         }
-
         updateUIState();
     }
 
