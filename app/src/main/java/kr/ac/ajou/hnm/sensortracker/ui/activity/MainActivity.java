@@ -20,6 +20,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.ac.ajou.hnm.sensortracker.R;
+import kr.ac.ajou.hnm.sensortracker.service.MonitorService;
 import kr.ac.ajou.hnm.sensortracker.ui.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,12 +45,17 @@ public class MainActivity extends AppCompatActivity {
         checkBleSupport();
         checkPermission();
         createDrawBar();
-
+        startMonitorService(); 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow();
         }
+    }
+
+    private void startMonitorService() {
+        Intent monitorServiceIntent = new Intent(this, MonitorService.class);
+        startService(monitorServiceIntent);
     }
 
     private void checkPermission() {
@@ -112,19 +118,16 @@ public class MainActivity extends AppCompatActivity {
         );
 
         mNavigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        switch(menuItem.getItemId()){
-                            case R.id.nav_bluetooth:
-                                Intent intent = new Intent(getApplicationContext(), MonitorConfigureActivity.class);
-                                startActivity(intent);
-                                break;
-                            case R.id.nav_setting:
-                                break;
-                        }
-                        return false;
+                menuItem -> {
+                    switch(menuItem.getItemId()){
+                        case R.id.nav_bluetooth:
+                            Intent intent = new Intent(getApplicationContext(), MonitorConfigureActivity.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.nav_setting:
+                            break;
                     }
+                    return false;
                 }
         );
     }

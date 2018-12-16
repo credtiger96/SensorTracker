@@ -64,6 +64,8 @@
 
     <string-array name="multi_select_list_preference_default_value" />
 
+
+
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
@@ -97,4 +99,14 @@
     <string name="dialog_connection_positive">Connect</string>
     <string name="dialog_connection_negative">Cancle</string>
     <string name="monitor_disconnect">DISCONNECT</string>
+    <string name="monitor_connected">monitor connected</string>
+    <string name="monitor_mac">MONITOR_MAC</string>
+
+
+
+    <string name="uuid_network_node">680c21d9-c946-4c1f-9c11-baa1c21329e7</string>
+    <string name ="uuid_location_data">003bbdf2-c634-4b3d-ab56-7ec889b89a37</string>
+    <string name="monitor_invalid">invailed monitor; disconnect.</string>
+    <string name="monitor_status_connected">Connected : %s</string>
+    <string name="monitor_status_disconnected">Not Connected</string>
 </resources>

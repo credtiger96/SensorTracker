@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="kr.ac.ajou.hnm.sensortracker">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
     <application
         android:name=".BaseApplication"
         android:icon="@mipmap/ic_launcher"
@@ -18,15 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.MonitorConfigureActivity"/>
+        <activity android:name=".ui.activity.MonitorConfigureActivity" />
+
+        <service
+            android:name=".service.MonitorService"
+            android:enabled="true"
+            android:exported="true"/>
 
     </application>
-
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 
 </manifest>
