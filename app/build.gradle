@@ -56,4 +56,7 @@ dependencies {
         transitive = true
     }
 
+    //graph
+    implementation 'com.jjoe64:graphview:4.2.2'
+
 }
