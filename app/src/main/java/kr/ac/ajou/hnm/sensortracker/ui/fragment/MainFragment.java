@@ -1,4 +1,4 @@
-package kr.ac.ajou.hnm.sensortracker.ui.main;
+package kr.ac.ajou.hnm.sensortracker.ui.fragment;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -13,25 +13,17 @@ import kr.ac.ajou.hnm.sensortracker.R;
 
 public class MainFragment extends Fragment {
 
-    private MainViewModel mViewModel;
-
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        // TODO: Use the ViewModel
-
     }
-
 }
