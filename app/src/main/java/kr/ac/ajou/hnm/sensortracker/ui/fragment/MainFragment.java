@@ -1,5 +1,6 @@
 package kr.ac.ajou.hnm.sensortracker.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -13,15 +14,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.ac.ajou.hnm.sensortracker.R;
+import kr.ac.ajou.hnm.sensortracker.model.Distance;
+import kr.ac.ajou.hnm.sensortracker.model.Record;
 import kr.ac.ajou.hnm.sensortracker.service.MonitorService;
 import kr.ac.ajou.hnm.sensortracker.ui.activity.MainActivity;
 
@@ -34,9 +41,13 @@ public class MainFragment extends Fragment {
     @BindView(R.id.graph)
     GraphView mGraphView;
 
-
+    @BindView(R.id.printing_board)
+    TextView mPrintingBoard;
 
     MonitorService mService;
+
+    ArrayList<Record> recordsList;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -73,8 +84,35 @@ public class MainFragment extends Fragment {
 
     }
 
+    void printBoard(String line){
+        mPrintingBoard.append(line + "\n");
+
+        // auto scroll for text view
+        final int scrollAmount = mPrintingBoard.getLayout().getLineTop(mPrintingBoard.getLineCount()) - mPrintingBoard.getHeight();
+        // if there is no need to scroll, scrollAmount will be <=0
+        if (scrollAmount > 0)
+            mPrintingBoard.scrollTo(0, scrollAmount);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @OnClick(R.id.main_initialize)
+    void onclick_main_initialize(){
+
+    }
+
+    @SuppressLint("DefaultLocale")
+    @OnClick(R.id.main_get_distances)
+    void onclick_main_get_distances(){
+        if (mService == null)
+            mService = ((MainActivity)getActivity()).mService;
+        ArrayList <Distance> distanceVector= mService.getDistancesVector();
+        if (distanceVector == null) return;
+        for (Distance distance : distanceVector){
+            printBoard(String.format("[%06d][%d] : %6d\n", distance.seq, distance.id, distance.distance));
+        }
     }
 }

@@ -30,10 +30,19 @@ public class MonitorService extends Service {
     private RxBleDevice mRxBleDevice;
     private Disposable mDisposable;
 
+    private int distanceSeq;
     private ArrayList<Distance> distancesVector;
 
     public MonitorService() {
         distancesVector = new ArrayList<>(10);
+        distanceSeq = 0;
+    }
+
+    public ArrayList<Distance> getDistancesVector() {
+        if (distancesVector == null){
+            return new ArrayList<Distance>(0);
+        }
+        return distancesVector;
     }
 
     public class LocalBinder extends Binder {
@@ -89,9 +98,8 @@ public class MonitorService extends Service {
             distance += ((long)data[offset + 4] & 0xFF) << 16;
             distance += ((long)data[offset + 5] & 0xFF) << 24;
 
-            distancesVector.add(new Distance(id, distance));
+            distancesVector.add(new Distance(distanceSeq++, id, distance));
         }
-
     }
 
     public void stopListening(){
